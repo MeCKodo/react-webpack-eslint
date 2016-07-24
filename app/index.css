@@ -321,3 +321,8 @@ footer #footer a {
 [data-dpr="3"] footer #footer a {
     font-size: 48px; }
 
+.box {
+    width: 400px;
+    height: 400px;
+    background: url("images/test-image.png");
+}

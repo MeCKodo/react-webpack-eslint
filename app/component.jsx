@@ -23,6 +23,7 @@ export default class Hello extends Component {
 				Likes : <span>{this.state.likesCount}</span>
 				<div><button className="default" onClick={this.onLike}>Like Me</button></div>
 				<div><button onClick={this.unlike}>unLike Me</button></div>
+				<div className="box"></div>
 			</div>
 		);
 	}

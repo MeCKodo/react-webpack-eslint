@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 
 export default class Hello extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {likesCount: 3 };
-    }
-    onLike = () => {
-        const newLikesCount = this.state.likesCount + 1;
-        this.setState({ likesCount: newLikesCount });
-    }
+	constructor(props) {
+		super(props);
+		this.state = { likesCount: 2 };
+		console.log('hello');
+	}
 
-    unlike = () => {
-        const newLikesCount = this.state.likesCount - 1;
-        this.setState({ likesCount: newLikesCount });
-    }
+	onLike = () => {
+		const newLikesCount = this.state.likesCount + 1;
+		this.setState({ likesCount: newLikesCount });
+	}
 
-    render() {
-        return (
-            <div>
-                Likes : <span>{this.state.likesCount}</span>
-                <div><button onClick={this.onLike}>Like Me</button></div>
+	unlike = () => {
+		const newLikesCount = this.state.likesCount - 2;
+		this.setState({ likesCount: newLikesCount });
+	}
 
-                
-                <div><button onClick={this.unlike}>unLike Me</button></div>
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div>
+				Likes : <span>{this.state.likesCount}</span>
+				<div><button className="default" onClick={this.onLike}>Like Me</button></div>
+				<div><button onClick={this.unlike}>unLike Me</button></div>
+			</div>
+		);
+	}
 }

@@ -324,5 +324,5 @@ footer #footer a {
 .box {
     width: 400px;
     height: 400px;
-    background: url("images/test-image.png");
+    /*background: url("images/test-image.png");*/
 }

@@ -8,15 +8,15 @@ var devFlagPlugin = new webpack.DefinePlugin({
 });
 module.exports = {
     entry : {
-        index: "./src/index.js",
+        index: "./src/index.jsx",
         vendor: ['react','react-dom']
     },
-    output: {
-        path: path.join(__dirname, 'dist'), //输出目录的配置，模板、样式、脚本、图片等资源的路径配置都相对于它
-        publicPath: '/dist/',                //模板、样式、脚本、图片等资源对应的server上的路径
-        filename: 'js/[name].js',            //每个页面对应的主js的生成配置
-        chunkFilename: 'js/[id].chunk.js'   //chunk生成的配置
-    },
+	output: {
+		path: path.resolve(__dirname, './dist'),
+		// publicPath: '/dist/',
+		chunkFilename: 'js/[id].js?[hash]',
+		filename: 'js/build.js?[hash]'
+	},
     resolve: {
         /*alias: {
             'react' : path.join(nodeModulePath,'/react/dist/react.js'),
@@ -49,14 +49,14 @@ module.exports = {
                 loader: 'url',
                 query: {
                     limit: 10000,
-                    name: '[name].[ext]?[hash:10]'
+                    name: 'images/[name].[ext]?[hash:10]'
                 }
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url",
                 query: {
-                    name: '[name].[ext]?mimetype=image/svg+xml'
+                    name: 'ifont/[name].[ext]?mimetype=image/svg+xml'
                 }
             },
             {
@@ -67,39 +67,39 @@ module.exports = {
                 test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url",
                 query: {
-                    name: '[name].[ext]?mimetype=application/font-woff2'
+                    name: 'ifont/[name].[ext]?mimetype=application/font-woff2'
                 }
             },
             {
                 test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url",
                 query: {
-                    name: '[name].[ext]?mimetype=application/font-woff2'
+                    name: 'ifont/[name].[ext]?mimetype=application/font-woff2'
                 }
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin("[name]/[name].css"),
-        new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin("css/[name].css"),
+        // new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
         }),
-        new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
-            filename: './index.html', //生成的html存放路径，相对于path
-            inject: 'body', //js插入的位置，true/'head'/'body'/false
-            hash: true, //为静态资源生成hash值
-            // chunks: ['vendor', 'index'],//需要引入的chunk，不配置就会引入所有页面的资源
-            minify: { //压缩HTML文件
-                removeComments: true, //移除HTML中的注释
-                collapseWhitespace: false //删除空白符与换行符
-            }
-        }),
-        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
+		new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
+			filename: 'index.html', //生成的html存放路径，相对于path
+			template:'./src/index.html',
+			inject: "body", //js插入的位置，true/'head'/'body'/false
+			chunks: ['vendor', 'index'],//需要引入的chunk，不配置就会引入所有页面的资源
+		}),
+		new HtmlWebpackPlugin({ //根据模板插入css/js等生成最终HTML
+			filename: 'login.html', //生成的html存放路径，相对于path
+			template:'./src/login.html',
+			inject: false, //js插入的位置，true/'head'/'body'/false
+		}),
+        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"js/vendor.bundle.js")
     ],
     devServer: {
-        contentBase : './src',
         historyApiFallback: true,
         host : '0.0.0.0',
         hot : true,
@@ -130,5 +130,5 @@ if (process.env.NODE_ENV === 'production') {
     ])
 } else {
     module.exports.devtool = '#source-map';
-    module.exports.plugins.push(devFlagPlugin)
+	module.exports.plugins.push(devFlagPlugin)
 }

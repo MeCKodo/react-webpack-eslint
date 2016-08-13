@@ -2,7 +2,10 @@ module.exports = {
     "extends": ["airbnb"],
     "parser": "babel-eslint",
     "globals" : {
-      "__DEV__":true
+      "__DEV__":true,
+		"$" : true,
+		"document" : true,
+		"window" : true
     },
     "plugins": [
         "react"

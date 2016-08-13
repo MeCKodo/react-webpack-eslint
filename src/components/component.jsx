@@ -21,7 +21,7 @@ export default class Hello extends Component {
 		return (
 			<div>
 				Likes : <span>{this.state.likesCount}</span>
-				<div>
+				<div >
 					<button className="default" onClick={this.onLike}>Like Me</button>
 				</div>
 				<div>

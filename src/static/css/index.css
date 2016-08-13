@@ -62,34 +62,6 @@ body {
     width: 10rem;
     margin: 0 auto; }
 
-@font-face {
-    font-family: 'iconfont';
-    src: url("//at.alicdn.com/t/font_1468375776_1426492.eot");
-    /* IE9*/
-    src: url("//at.alicdn.com/t/font_1468375776_1426492.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1468375776_1426492.woff") format("woff"), url("//at.alicdn.com/t/font_1468375776_1426492.ttf") format("truetype"), url("//at.alicdn.com/t/font_1468375776_1426492.svg#iconfont") format("svg");
-    /* iOS 4.1- */ }
-
-@font-face {
-    font-family: 'iconfont2';
-    src: url("//at.alicdn.com/t/font_1467687629_8740807.eot");
-    /* IE9*/
-    src: url("//at.alicdn.com/t/font_1467687629_8740807.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1467687629_8740807.woff") format("woff"), url("//at.alicdn.com/t/font_1467687629_8740807.ttf") format("truetype"), url("//at.alicdn.com/t/font_1467687629_8740807.svg#iconfont") format("svg");
-    /* iOS 4.1- */ }
-
-.iconfont {
-    font-family: 'iconfont';
-    font-size: 18px;
-    -webkit-font-smoothing: antialiased;
-    font-weight: normal;
-    font-style: normal; }
-
-.iconfont2 {
-    font-family: 'iconfont2';
-    font-size: 18px;
-    -webkit-font-smoothing: antialiased;
-    font-weight: normal;
-    font-style: normal; }
-
 html, body {
     height: 100%; }
 
